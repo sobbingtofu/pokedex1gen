@@ -1,16 +1,9 @@
-"use client"
-
-import { useEffect } from "react"
-import axios from "axios"
+import PokemonCardsContainer from "./_components/PokemonCardsContainer"
 
 export default function Home() {
-  const fecthData = async () => {
-    const { data } = await axios.get("http://localhost:3000/api/pokemons")
-    console.log(data)
-  }
-  useEffect(() => {
-    fecthData()
-  })
-
-  return <div className="min-h-screen bg-slate-600">asdfasd</div>
+  return (
+    <div className="flex min-h-screen flex-col items-center bg-slate-600">
+      <PokemonCardsContainer />
+    </div>
+  )
 }
