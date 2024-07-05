@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import axios from "axios"
 
-const TOTAL_POKEMON = 12
+const TOTAL_POKEMON = 151
 //151
 
 export const GET = async (request: Request) => {

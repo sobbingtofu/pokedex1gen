@@ -21,10 +21,6 @@ function PokemonCardsContainer() {
     gcTime: 8 * 60 * 1000, // 8분
   })
 
-  useEffect(() => {
-    console.log(pokedex || "loading")
-  }, [pokedex])
-
   return (
     <>
       {isLoading ? (

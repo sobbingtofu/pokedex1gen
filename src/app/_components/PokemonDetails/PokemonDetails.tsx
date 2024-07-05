@@ -37,8 +37,6 @@ function PokemonDetails() {
   } else if (isError) {
     return <ErrorMessage />
   } else {
-    console.log(pokemonDetails)
-
     const koreanAbilities =
       pokemonDetails?.abilities?.map((abilityObj) => {
         return {
