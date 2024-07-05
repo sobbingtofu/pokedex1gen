@@ -9,7 +9,7 @@ import { Tpokemon } from "../_types/pokemon.type"
 // }
 
 export const fecthPokedex = async () => {
-  const TOTAL_POKEMON = 30
+  const TOTAL_POKEMON = 16
 
   const allPokemonPromises = Array.from(
     { length: TOTAL_POKEMON },
