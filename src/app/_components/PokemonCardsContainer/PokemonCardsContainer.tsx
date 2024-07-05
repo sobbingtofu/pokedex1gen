@@ -32,7 +32,7 @@ function PokemonCardsContainer() {
       ) : isError ? (
         <ErrorMessage />
       ) : (
-        <div className="my-[100px] grid w-4/5 gap-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="my-[150px] grid w-4/5 gap-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {pokedex?.map((pokemon) => {
             return (
               <PokemonCard pokemon={pokemon} key={pokemon.id}></PokemonCard>

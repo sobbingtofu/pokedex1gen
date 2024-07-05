@@ -15,7 +15,7 @@ function PokemonCard({ pokemon }: PropsWithChildren<pokemonCardprops>) {
   return (
     <Link href={`/pokemon/${pokemon.id}`} scroll={true}>
       <div className="flex h-max cursor-pointer flex-col items-center justify-start gap-4 rounded-3xl bg-zinc-50 p-[40px] shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl">
-        <div className="relative aspect-square h-[180px] w-[180px]">
+        <div className="relative z-0 aspect-square h-[180px] w-[180px]">
           <Image
             fill
             alt={pokemon.korean_name}

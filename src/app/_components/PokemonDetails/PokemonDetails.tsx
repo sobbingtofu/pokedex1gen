@@ -4,11 +4,8 @@ import Image from "next/image"
 import { useParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 
-import { fecthPokedex } from "@/app/_api/fetchPokedex"
 import { fetchPokemonDetails } from "@/app/_api/fetchPokemonDetails"
-import { Tpokemon } from "@/app/_types/pokemon.type"
 import { TpokemonDetail } from "@/app/_types/pokemonDetail.type"
-import { TpokemonType } from "@/app/_types/pokemonType.type"
 
 import ErrorMessage from "../ErrorMessage"
 import Loader from "../Loader"
@@ -62,7 +59,7 @@ function PokemonDetails() {
     })
 
     return (
-      <div className="my-[80px] flex h-max w-3/5 flex-col items-center justify-start gap-2 rounded-3xl bg-zinc-50 p-[40px] py-[30px] shadow-lg">
+      <div className="my-[150px] flex h-max w-3/5 flex-col items-center justify-start gap-2 rounded-3xl bg-zinc-50 p-[40px] py-[30px] shadow-lg">
         {/* 도감번호 */}
         <p id="pokemonId" className="text-lg font-bold text-stone-500">
           {"no." + zeroPad(pokemonDetails?.id, 3)}
@@ -75,7 +72,7 @@ function PokemonDetails() {
         <div className="mt-[30px] flex flex-col items-center justify-center gap-y-12">
           <div
             id="pokemonAnimated"
-            className="relative aspect-square h-[120px] sm:h-[180px] md:h-[200px] lg:h-[200px] xl:h-[200px]"
+            className="relative z-0 aspect-square h-[120px] sm:h-[180px] md:h-[200px] lg:h-[200px] xl:h-[200px]"
           >
             <Image
               fill
@@ -92,7 +89,7 @@ function PokemonDetails() {
           </div>
           <div
             id="pokemonImage"
-            className="relative aspect-square h-[150px] sm:h-[200px] md:h-[300px] lg:h-[400px] xl:h-[400px]"
+            className="relative z-0 aspect-square h-[150px] sm:h-[200px] md:h-[300px] lg:h-[400px] xl:h-[400px]"
           >
             <Image
               fill
