@@ -65,30 +65,49 @@ function PokemonDetails() {
       <div className="my-[80px] flex h-max w-3/5 flex-col items-center justify-start gap-2 rounded-3xl bg-zinc-50 p-[40px] py-[30px] shadow-lg">
         {/* 도감번호 */}
         <p id="pokemonId" className="text-lg font-bold text-stone-500">
-          {"no." + pokemonDetails?.id}
+          {"no." + zeroPad(pokemonDetails?.id, 3)}
         </p>
         {/* 이름 */}
         <p id="pokemonName" className="mt-4 text-5xl font-black">
           {pokemonDetails?.korean_name}
         </p>
         {/* 이미지 */}
-        <div
-          id="pokemonImage"
-          className="relative aspect-square h-[400px] w-[400px]"
-        >
-          <Image
-            fill
-            alt={pokemonDetails?.korean_name || ""}
-            src={
-              pokemonDetails?.sprites?.other?.["official-artwork"]
-                ?.front_default ||
-              pokemonDetails?.sprites?.front_default ||
-              ""
-            }
-            className="object-cover"
-            unoptimized
-            priority
-          />
+        <div className="mt-[30px] flex flex-col items-center justify-center gap-y-12">
+          <div
+            id="pokemonAnimated"
+            className="relative aspect-square h-[120px] sm:h-[180px] md:h-[200px] lg:h-[200px] xl:h-[200px]"
+          >
+            <Image
+              fill
+              alt={pokemonDetails?.korean_name || ""}
+              src={
+                pokemonDetails?.sprites?.other?.showdown?.front_default ||
+                pokemonDetails?.sprites?.front_default ||
+                ""
+              }
+              className="object-contain"
+              unoptimized
+              priority={false}
+            />
+          </div>
+          <div
+            id="pokemonImage"
+            className="relative aspect-square h-[150px] sm:h-[200px] md:h-[300px] lg:h-[400px] xl:h-[400px]"
+          >
+            <Image
+              fill
+              alt={pokemonDetails?.korean_name || ""}
+              src={
+                pokemonDetails?.sprites?.other?.["official-artwork"]
+                  ?.front_default ||
+                pokemonDetails?.sprites?.front_default ||
+                ""
+              }
+              className="object-cover"
+              unoptimized
+              priority={false}
+            />
+          </div>
         </div>
         {/* 타입 */}
         <div id="pokemonType" className="flex items-center justify-start gap-3">
@@ -96,7 +115,7 @@ function PokemonDetails() {
           {koreanTypes?.map((type) => {
             return (
               <div
-                className="rounded-xl bg-black px-2 py-1 font-semibold text-white"
+                className={`${type === "불꽃" ? "bg-red-600" : type === "비행" ? "bg-cyan-300" : type === "노말" ? "bg-gray-400" : type === "격투" ? "bg-orange-600" : type === "독" ? "bg-purple-900" : type === "땅" ? "bg-yellow-900" : type === "바위" ? "bg-yellow-700" : type === "벌레" ? "bg-lime-400" : type === "고스트" ? "bg-purple-950" : type === "강철" ? "bg-slate-700" : type === "물" ? "bg-cyan-600" : type === "풀" ? "bg-green-600" : type === "전기" ? "bg-yellow-500" : type === "에스퍼" ? "bg-pink-600" : type === "얼음" ? "bg-teal-400" : type === "드래곤" ? "bg-indigo-700" : type === "악" ? "bg-black" : type === "페어리" ? "bg-pink-500" : "bg-slate-700"} rounded-xl px-2 py-1 font-semibold text-white`}
                 key={type}
               >
                 {type}
@@ -138,7 +157,7 @@ function PokemonDetails() {
           className="mt-3 flex flex-col items-center justify-center gap-5"
         >
           <p className="mt-6 text-2xl font-black">종족치</p>
-          <div className="flex items-center gap-4">
+          <div className="xs:grid-cols-1 grid items-center gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-7">
             {pokemonDetails?.stats?.map((statObj) => {
               return (
                 <div
@@ -166,7 +185,7 @@ function PokemonDetails() {
             })}
             <div className="ml-1 flex w-[65px] flex-col items-center gap-2">
               <div className="text-lg font-bold">총계</div>
-              <div className="text-lg font-bold text-teal-500">
+              <div className="text-lg font-bold text-black">
                 {totalBaseStats}
               </div>
             </div>
@@ -178,10 +197,10 @@ function PokemonDetails() {
           className="mt-3 flex flex-col items-center justify-center gap-5"
         >
           <p className="mt-6 text-2xl font-black">습득 가능 기술</p>
-          <div className="flex flex-col items-center gap-4">
+          <div className="my-[20px] grid gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {pokemonDetails?.moves?.map((moveObj) => {
               return (
-                <div key={moveObj.move.korean_name}>
+                <div key={moveObj.move.korean_name} className="text-center">
                   {moveObj.move.korean_name}
                 </div>
               )
